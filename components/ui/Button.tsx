@@ -1,11 +1,11 @@
-import { type ButtonHTMLAttributes } from "react";
+import { type ButtonHTMLAttributes, type ReactNode } from "react";
 
 type Variant = "primary" | "secondary" | "dark" | "heroOrder";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
   variant?: Variant;
   href?: string;
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 }
 

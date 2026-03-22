@@ -26,14 +26,14 @@ const pizzaNames = [
 ];
 
 export default function Hero() {
-  const [selectedSize, setSelectedSize] = useState("L");
+  const [selectedSize, setSelectedSize] = useState<(typeof sizes)[number]>("L");
   const [highlightedPizza, setHighlightedPizza] = useState(0);
   const { openModal } = useOrder();
 
   return (
-    <section className="relative overflow-hidden min-h-[90vh] flex flex-col items-center justify-end pb-8 sm:pb-10 md:pb-12 bg-neutral-200/80">
-      {/* Size selector - above the pizza */}
-      <div className="relative z-20 mb-2 flex flex-col items-center sm:mb-4">
+    <section className="relative overflow-hidden min-h-screen flex flex-col bg-neutral-200/80">
+      {/* Section 1: Size selector */}
+      <div className="relative z-20 flex flex-col items-center pt-6 pb-2 sm:pb-4">
         <span className="mb-2 text-xs font-medium uppercase tracking-wider text-neutral-500">
           Select size
         </span>
@@ -69,10 +69,10 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Huge centered pizza + dotted arc + pizza names — scales with selected size */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      {/* Huge centered pizza + dotted arc + pizza names — scales with selected size (background) */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
         <div
-          className="relative w-full min-w-full aspect-square drop-shadow-[0_20px_40px_-15px_rgba(0,0,0,0.12)] transition-transform duration-300 ease-out"
+          className="relative w-full min-w-full aspect-square drop-shadow-[0_20px_40px_-15px_rgba(0,0,0,0.12)]"
           style={{ transform: `translateY(-25%) scale(${sizeScale[selectedSize]})` }}
         >
           {/* Pizza circle - picture style: shadow + frame */}
@@ -144,7 +144,7 @@ export default function Hero() {
                 return (
                   <span
                     key={name}
-                    className="absolute text-[clamp(0.4rem,1.1vw,0.6rem)] font-semibold uppercase tracking-wider whitespace-nowrap -translate-x-1/2 -translate-y-1/2 transition-colors"
+                    className="absolute text-[clamp(0.4rem,1.1vw,0.6rem)] font-semibold uppercase tracking-wider whitespace-nowrap -translate-x-1/2 -translate-y-1/2"
                     style={{
                       left: `${textX}%`,
                       top: `${textY}%`,
@@ -160,14 +160,50 @@ export default function Hero() {
         </div>
       </div>
 
+      {/* Section 4: Dark block — pizza image, CRUST PIZZA card, headline + description */}
+      <div className="relative z-10 w-full bg-neutral-900 px-4 py-12 sm:py-16 md:py-20">
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 md:flex-row md:items-stretch md:gap-10">
+          {/* Left: Pizza image */}
+          <div className="relative w-full flex-shrink-0 overflow-hidden rounded-2xl md:w-2/5 md:max-w-md">
+            <div className="relative aspect-[4/3] w-full">
+              <Image
+                src="/057f1b6c-ec55-47d9-8275-cabf3479c3fe.jpg"
+                alt="Fresh pizza on wooden board"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 40vw"
+              />
+            </div>
+          </div>
+          {/* Middle: CRUST PIZZA card */}
+          <div className="flex flex-shrink-0 items-center justify-center md:w-auto">
+            <div className="rounded-xl border border-neutral-600 bg-neutral-800 px-8 py-6 text-center">
+              <span className="text-xl font-bold tracking-tight text-white sm:text-2xl">
+                CRUST PIZZA
+              </span>
+            </div>
+          </div>
+          {/* Right: Headline + description */}
+          <div className="flex flex-1 flex-col justify-center text-white">
+            <h2 className="mb-4 text-2xl font-bold leading-tight sm:text-3xl md:text-4xl">
+              Chicago-Style Thin Crust Pizza That Even Texans Will Love
+            </h2>
+            <p className="max-w-lg text-neutral-300 sm:text-lg">
+              We&apos;re a locally owned pizza shop serving quality ingredients and a comfortable
+              atmosphere. Stop by or order online for pickup and delivery.
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Order Now - clickable overlay */}
-      <div className="relative z-20 pointer-events-auto">
+      <div className="relative z-20 pointer-events-auto pb-8 sm:pb-10 md:pb-12">
         <Tooltip text="Place your order" placement="top">
           <span className="inline-block">
             <button
               type="button"
               onClick={openModal}
-              className="inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 bg-neutral-900 text-white focus:ring-neutral-600 px-5 py-3 hover:bg-gradient-to-r hover:from-[#ea580c] hover:via-[#c2410c] hover:to-neutral-800 shadow-lg sm:px-6 sm:py-3"
+              className="inline-flex items-center justify-center gap-2 rounded-full font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 bg-neutral-900 text-white focus:ring-neutral-600 px-5 py-3 hover:bg-gradient-to-r hover:from-[#ea580c] hover:via-[#c2410c] hover:to-neutral-800 shadow-lg sm:px-6 sm:py-3"
             >
               Order Now
             </button>

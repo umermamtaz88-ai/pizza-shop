@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useId } from "react";
+import { useState, useId, type ReactNode } from "react";
 
 type Placement = "top" | "bottom";
 
 interface TooltipProps {
   text: string;
-  children: React.ReactNode;
+  children: ReactNode;
   placement?: Placement;
   className?: string;
 }

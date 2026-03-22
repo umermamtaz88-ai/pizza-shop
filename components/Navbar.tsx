@@ -111,7 +111,7 @@ export default function Navbar() {
                   >
                     About
                     <svg
-                      className={`h-4 w-4 transition-transform ${aboutOpen ? "rotate-180" : ""}`}
+                      className={`h-4 w-4 ${aboutOpen ? "rotate-180" : ""}`}
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"

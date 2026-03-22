@@ -92,11 +92,11 @@ export default function OrderModal() {
 
     return (
         <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 animate-fadeIn"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 animate-modal-backdrop"
             onClick={handleClose}
         >
             <div
-                className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white shadow-2xl animate-slideUp"
+                className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl border border-neutral-900/20 bg-white shadow-2xl"
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Header */}
@@ -108,7 +108,7 @@ export default function OrderModal() {
                         <button
                             type="button"
                             onClick={handleClose}
-                            className="flex h-9 w-9 items-center justify-center rounded-full bg-neutral-100 text-neutral-500 transition hover:bg-neutral-200 hover:text-neutral-700"
+                            className="flex h-9 w-9 items-center justify-center rounded-full bg-neutral-100 text-neutral-500 hover:bg-neutral-200 hover:text-neutral-700"
                             aria-label="Close"
                         >
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
@@ -132,12 +132,12 @@ export default function OrderModal() {
                                                 if (step.id < currentStep && !isPlaced) setCurrentStep(step.id);
                                             }}
                                             disabled={isPlaced || step.id > currentStep}
-                                            className={`flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold transition-all duration-300 ${isCompleted
-                                                    ? "bg-green-500 text-white shadow-md shadow-green-500/30 scale-100"
+                                            className={`flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold ${isCompleted
+                                                    ? "bg-green-500 text-white shadow-md shadow-green-500/30"
                                                     : isActive
-                                                        ? "bg-[#ea580c] text-white shadow-lg shadow-orange-500/30 scale-110 ring-4 ring-orange-200"
+                                                        ? "bg-[#ea580c] text-white shadow-lg shadow-orange-500/30 ring-4 ring-orange-200"
                                                         : "bg-neutral-100 text-neutral-400"
-                                                } ${step.id < currentStep && !isPlaced ? "cursor-pointer hover:scale-105" : ""}`}
+                                                } ${step.id < currentStep && !isPlaced ? "cursor-pointer" : ""}`}
                                         >
                                             {isCompleted ? (
                                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="h-5 w-5">
@@ -148,7 +148,7 @@ export default function OrderModal() {
                                             )}
                                         </button>
                                         <span
-                                            className={`text-[11px] font-semibold tracking-wide transition-colors ${isActive ? "text-[#ea580c]" : isCompleted ? "text-green-600" : "text-neutral-400"
+                                            className={`text-[11px] font-semibold tracking-wide ${isActive ? "text-[#ea580c]" : isCompleted ? "text-green-600" : "text-neutral-400"
                                                 }`}
                                         >
                                             {step.label}
@@ -158,7 +158,7 @@ export default function OrderModal() {
                                     {index < steps.length - 1 && (
                                         <div className="relative mx-2 h-1 flex-1 rounded-full bg-neutral-100 overflow-hidden">
                                             <div
-                                                className="absolute inset-y-0 left-0 rounded-full transition-all duration-500 ease-out"
+                                                className="absolute inset-y-0 left-0 rounded-full"
                                                 style={{
                                                     width: isCompleted ? "100%" : isActive ? "50%" : "0%",
                                                     background: isCompleted
@@ -217,7 +217,7 @@ export default function OrderModal() {
                                                             {/* Mini progress: share of total */}
                                                             <div className="mt-1.5 h-1.5 w-full max-w-[120px] rounded-full bg-neutral-100 overflow-hidden">
                                                                 <div
-                                                                    className="h-full rounded-full bg-gradient-to-r from-orange-400 to-[#ea580c] transition-all duration-500"
+                                                                    className="h-full rounded-full bg-gradient-to-r from-orange-400 to-[#ea580c]"
                                                                     style={{
                                                                         width: `${totalPrice > 0 ? ((item.price * item.quantity) / totalPrice) * 100 : 0}%`,
                                                                     }}
@@ -229,7 +229,7 @@ export default function OrderModal() {
                                                                 <button
                                                                     type="button"
                                                                     onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                                                                    className="flex h-7 w-7 items-center justify-center rounded-full border border-neutral-200 text-neutral-600 transition hover:bg-neutral-100 hover:border-neutral-300"
+                                                                    className="flex h-7 w-7 items-center justify-center rounded-full border border-neutral-200 text-neutral-600 hover:bg-neutral-100 hover:border-neutral-300"
                                                                     aria-label="Decrease quantity"
                                                                 >
                                                                     −
@@ -238,7 +238,7 @@ export default function OrderModal() {
                                                                 <button
                                                                     type="button"
                                                                     onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                                                                    className="flex h-7 w-7 items-center justify-center rounded-full border border-neutral-200 text-neutral-600 transition hover:bg-neutral-100 hover:border-neutral-300"
+                                                                    className="flex h-7 w-7 items-center justify-center rounded-full border border-neutral-200 text-neutral-600 hover:bg-neutral-100 hover:border-neutral-300"
                                                                     aria-label="Increase quantity"
                                                                 >
                                                                     +
@@ -256,7 +256,7 @@ export default function OrderModal() {
                                                                 removeItem(item.id);
                                                                 toast("Removed from cart", { description: item.name });
                                                             }}
-                                                                className="flex h-7 w-7 items-center justify-center rounded-full text-neutral-400 transition hover:bg-red-50 hover:text-red-500"
+                                                                className="flex h-7 w-7 items-center justify-center rounded-full text-neutral-400 hover:bg-red-50 hover:text-red-500"
                                                                 aria-label={`Remove ${item.name}`}
                                                             >
                                                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
@@ -286,7 +286,7 @@ export default function OrderModal() {
                                         type="button"
                                         onClick={() => setCurrentStep(2)}
                                         disabled={!canGoToDetails}
-                                        className="w-full rounded-full bg-[#ea580c] py-3.5 text-base font-bold text-white shadow-lg shadow-orange-500/20 transition-all hover:bg-[#c2410c] hover:shadow-xl hover:shadow-orange-500/30 disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none"
+                                        className="w-full rounded-full bg-[#ea580c] py-3.5 text-base font-bold text-white shadow-lg shadow-orange-500/20 hover:bg-[#c2410c] hover:shadow-xl hover:shadow-orange-500/30 disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none"
                                     >
                                         Continue to Details →
                                     </button>
@@ -314,7 +314,7 @@ export default function OrderModal() {
                                         {(["Delivery", "Pickup"] as const).map((type) => (
                                             <label
                                                 key={type}
-                                                className={`flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-full py-2.5 text-sm font-semibold transition ${deliveryType === type
+                                                className={`flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-full py-2.5 text-sm font-semibold ${deliveryType === type
                                                         ? "bg-neutral-900 text-white"
                                                         : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
                                                     }`}
@@ -344,7 +344,7 @@ export default function OrderModal() {
                                             placeholder="Your name"
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
-                                            className="w-full rounded-xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition"
+                                            className="w-full rounded-xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-400/20"
                                         />
                                     </div>
                                     <div>
@@ -355,7 +355,7 @@ export default function OrderModal() {
                                             placeholder="Phone number"
                                             value={phone}
                                             onChange={(e) => setPhone(e.target.value)}
-                                            className="w-full rounded-xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition"
+                                            className="w-full rounded-xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-400/20"
                                         />
                                     </div>
                                 </div>
@@ -367,7 +367,7 @@ export default function OrderModal() {
                                         placeholder="your@email.com"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        className="w-full rounded-xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition"
+                                        className="w-full rounded-xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-400/20"
                                     />
                                 </div>
 
@@ -380,7 +380,7 @@ export default function OrderModal() {
                                             placeholder="Street, city, ZIP"
                                             value={address}
                                             onChange={(e) => setAddress(e.target.value)}
-                                            className="w-full rounded-xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition"
+                                            className="w-full rounded-xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-400/20"
                                         />
                                     </div>
                                 )}
@@ -396,7 +396,7 @@ export default function OrderModal() {
                                         ].map(({ value, label, icon }) => (
                                             <label
                                                 key={value}
-                                                className={`flex cursor-pointer items-center gap-2 rounded-lg border-2 px-4 py-2.5 text-sm font-medium transition ${contactPreference === value
+                                                className={`flex cursor-pointer items-center gap-2 rounded-lg border-2 px-4 py-2.5 text-sm font-medium ${contactPreference === value
                                                         ? "border-[#ea580c] bg-orange-50 text-[#ea580c]"
                                                         : "border-neutral-200 bg-neutral-50 text-neutral-600 hover:border-neutral-300"
                                                     }`}
@@ -426,7 +426,7 @@ export default function OrderModal() {
                                         ].map(({ value, label }) => (
                                             <label
                                                 key={value}
-                                                className="flex cursor-pointer items-center gap-3 rounded-lg border border-neutral-200 bg-neutral-50/50 px-4 py-3 text-sm text-neutral-700 transition hover:bg-neutral-50 hover:border-neutral-300"
+                                                className="flex cursor-pointer items-center gap-3 rounded-lg border border-neutral-200 bg-neutral-50/50 px-4 py-3 text-sm text-neutral-700 hover:bg-neutral-50 hover:border-neutral-300"
                                             >
                                                 <input
                                                     type="radio"
@@ -485,7 +485,7 @@ export default function OrderModal() {
                                         value={specialInstructions}
                                         onChange={(e) => setSpecialInstructions(e.target.value)}
                                         rows={3}
-                                        className="w-full resize-none rounded-xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition"
+                                        className="w-full resize-none rounded-xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-400/20"
                                     />
                                 </div>
 
@@ -500,8 +500,8 @@ export default function OrderModal() {
                                     </div>
                                     <div className="h-2 w-full rounded-full bg-neutral-100 overflow-hidden">
                                         <div
-                                            className="h-full rounded-full transition-all duration-500 ease-out"
-                                            style={{
+className="h-full rounded-full"
+                                        style={{
                                                 width: `${(
                                                         [name.trim(), phone.trim(), deliveryType === "Pickup" || address.trim()].filter(Boolean).length /
                                                         (deliveryType === "Delivery" ? 3 : 2)
@@ -522,7 +522,7 @@ export default function OrderModal() {
                                 <button
                                     type="button"
                                     onClick={() => setCurrentStep(1)}
-                                    className="flex-1 rounded-full border-2 border-neutral-200 py-3 text-base font-semibold text-neutral-700 transition hover:bg-neutral-50 hover:border-neutral-300"
+                                    className="flex-1 rounded-full border-2 border-neutral-200 py-3 text-base font-semibold text-neutral-700 hover:bg-neutral-50 hover:border-neutral-300"
                                 >
                                     ← Back
                                 </button>
@@ -530,7 +530,7 @@ export default function OrderModal() {
                                     type="button"
                                     onClick={handlePlaceOrder}
                                     disabled={!canPlaceOrder}
-                                    className="flex-[2] rounded-full bg-[#ea580c] py-3 text-base font-bold text-white shadow-lg shadow-orange-500/20 transition-all hover:bg-[#c2410c] hover:shadow-xl hover:shadow-orange-500/30 disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none"
+                                    className="flex-[2] rounded-full bg-[#ea580c] py-3 text-base font-bold text-white shadow-lg shadow-orange-500/20 hover:bg-[#c2410c] hover:shadow-xl hover:shadow-orange-500/30 disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none"
                                 >
                                     Place Order — ${totalPrice.toFixed(2)}
                                 </button>
@@ -562,7 +562,7 @@ export default function OrderModal() {
                                 </div>
                                 <div className="h-2.5 w-full rounded-full bg-neutral-100 overflow-hidden">
                                     <div
-                                        className="h-full rounded-full bg-gradient-to-r from-green-500 via-green-400 to-orange-400 transition-all duration-1000"
+                                        className="h-full rounded-full bg-gradient-to-r from-green-500 via-green-400 to-orange-400"
                                         style={{ width: "35%" }}
                                     />
                                 </div>
@@ -619,7 +619,7 @@ export default function OrderModal() {
                             <button
                                 type="button"
                                 onClick={handleClose}
-                                className="mt-6 rounded-full bg-[#ea580c] px-6 py-2.5 font-semibold text-white transition hover:bg-[#c2410c]"
+                                className="mt-6 rounded-full bg-[#ea580c] px-6 py-2.5 font-semibold text-white hover:bg-[#c2410c]"
                             >
                                 Done
                             </button>
@@ -629,16 +629,17 @@ export default function OrderModal() {
             </div>
 
             <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
+        @keyframes modalBackdropFadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
         }
-        @keyframes slideUp {
-          from { opacity: 0; transform: translateY(20px) scale(0.98); }
-          to { opacity: 1; transform: translateY(0) scale(1); }
+        .animate-modal-backdrop {
+          animation: modalBackdropFadeIn 0.25s ease-out;
         }
-        .animate-fadeIn { animation: fadeIn 0.2s ease-out; }
-        .animate-slideUp { animation: slideUp 0.3s ease-out; }
       `}</style>
         </div>
     );

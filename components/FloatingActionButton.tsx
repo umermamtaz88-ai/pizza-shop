@@ -9,7 +9,7 @@ export default function FloatingActionButton() {
     <button
       type="button"
       onClick={openModal}
-      className="fixed bottom-6 right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#ea580c] text-white shadow-lg shadow-orange-500/30 transition-all duration-200 hover:scale-110 hover:bg-[#c2410c] hover:shadow-xl hover:shadow-orange-500/40 focus:outline-none focus:ring-4 focus:ring-orange-400/50 sm:bottom-8 sm:right-8 sm:h-16 sm:w-16"
+      className="fixed bottom-6 right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#ea580c] text-white shadow-lg shadow-orange-500/30 hover:bg-[#c2410c] hover:shadow-xl hover:shadow-orange-500/40 focus:outline-none focus:ring-4 focus:ring-orange-400/50 sm:bottom-8 sm:right-8 sm:h-16 sm:w-16"
       aria-label="Open cart"
     >
       <svg

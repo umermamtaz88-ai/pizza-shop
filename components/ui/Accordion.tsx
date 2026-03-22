@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 
 export type AccordionItem = {
   id: string;
   question: string;
-  answer: React.ReactNode;
+  answer: ReactNode;
 };
 
 type AccordionProps = {
@@ -50,7 +50,7 @@ export default function Accordion({
             >
               <span>{question}</span>
               <svg
-                className={`h-5 w-5 shrink-0 text-neutral-500 transition-transform ${isOpen ? "rotate-180" : ""}`}
+                className={`h-5 w-5 shrink-0 text-neutral-500 ${isOpen ? "rotate-180" : ""}`}
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -66,7 +66,7 @@ export default function Accordion({
               id={`accordion-answer-${id}`}
               role="region"
               aria-labelledby={`accordion-question-${id}`}
-              className={`grid transition-[grid-template-rows] duration-200 ease-out ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
+              className={`grid ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
             >
               <div className="overflow-hidden">
                 <div className="border-t border-neutral-100 px-4 py-3 text-sm text-neutral-600">
