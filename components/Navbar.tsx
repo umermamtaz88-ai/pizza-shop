@@ -184,15 +184,19 @@ export default function Navbar() {
           <Tooltip text={open ? "Close menu" : "Open menu"}>
             <button
               type="button"
-              className="flex h-10 w-10 items-center justify-center rounded-lg text-neutral-400 hover:bg-white/5 md:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-lg text-neutral-400 hover:bg-white/5 md:hidden cursor-pointer"
               onClick={() => setOpen((o) => !o)}
               aria-expanded={open}
               aria-label="Toggle menu"
             >
               {open ? (
-                <span className="text-xl leading-none">×</span>
+                <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
               ) : (
-                <span className="text-xl leading-none">☰</span>
+                <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
               )}
             </button>
           </Tooltip>

@@ -5,9 +5,36 @@ import { toast } from "sonner";
 import { useOrder } from "./OrderContext";
 
 const steps = [
-    { id: 1, label: "Cart", icon: "🛒" },
-    { id: 2, label: "Details", icon: "📝" },
-    { id: 3, label: "Confirm", icon: "✅" },
+    {
+        id: 1,
+        label: "Cart",
+        icon: (
+            <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+            </svg>
+        ),
+    },
+    {
+        id: 2,
+        label: "Details",
+        icon: (
+            <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 20h9" />
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+            </svg>
+        ),
+    },
+    {
+        id: 3,
+        label: "Confirm",
+        icon: (
+            <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+            </svg>
+        ),
+    },
 ];
 
 export default function OrderModal() {
@@ -96,7 +123,7 @@ export default function OrderModal() {
             onClick={handleClose}
         >
             <div
-                className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl border border-neutral-900/20 bg-white shadow-2xl"
+                className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl border border-neutral-900/20 bg-white shadow-2xl animate-modal-content"
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Header */}
@@ -327,7 +354,15 @@ export default function OrderModal() {
                                                     onChange={() => setDeliveryType(type)}
                                                     className="sr-only"
                                                 />
-                                                {type === "Delivery" ? "🚚 " : "🏪 "}
+                                                {type === "Delivery" ? (
+                                                    <svg className="h-4 w-4 mr-1.5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden>
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125a1.125 1.125 0 0 0 1.125-1.125V9.75M3.75 14.25h16.5M3.75 14.25V4.875c0-.621.504-1.125 1.125-1.125h9.75c.621 0 1.125.504 1.125 1.125v9.375m-8.25-3h8.25" />
+                                                    </svg>
+                                                ) : (
+                                                    <svg className="h-4 w-4 mr-1.5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden>
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.5a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75h-3.5a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z" />
+                                                    </svg>
+                                                )}
                                                 {type}
                                             </label>
                                         ))}
@@ -390,9 +425,33 @@ export default function OrderModal() {
                                     <p className="mb-2 text-sm font-medium text-neutral-700">Preferred contact</p>
                                     <div className="flex flex-wrap gap-3">
                                         {[
-                                            { value: "phone" as const, label: "Phone call", icon: "📞" },
-                                            { value: "sms" as const, label: "Text (SMS)", icon: "💬" },
-                                            { value: "email" as const, label: "Email", icon: "✉️" },
+                                            {
+                                                value: "phone" as const,
+                                                label: "Phone call",
+                                                icon: (
+                                                    <svg className="h-4 w-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden>
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.387a12.035 12.035 0 0 1-7.108-7.108c-.155-.44.011-.927.387-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v1.25Z" />
+                                                    </svg>
+                                                )
+                                            },
+                                            {
+                                                value: "sms" as const,
+                                                label: "Text (SMS)",
+                                                icon: (
+                                                    <svg className="h-4 w-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden>
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
+                                                    </svg>
+                                                )
+                                            },
+                                            {
+                                                value: "email" as const,
+                                                label: "Email",
+                                                icon: (
+                                                    <svg className="h-4 w-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden>
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                                                    </svg>
+                                                )
+                                            },
                                         ].map(({ value, label, icon }) => (
                                             <label
                                                 key={value}
@@ -639,6 +698,19 @@ className="h-full rounded-full"
         }
         .animate-modal-backdrop {
           animation: modalBackdropFadeIn 0.25s ease-out;
+        }
+        @keyframes modalContentScaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.96) translateY(8px);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+          }
+        }
+        .animate-modal-content {
+          animation: modalContentScaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
       `}</style>
         </div>

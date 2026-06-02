@@ -4,11 +4,66 @@ import { useState } from "react";
 import MenuCard, { type MenuItem } from "./MenuCard";
 
 const categories = [
-  { id: "gourmet", label: "Gourmet Pizzas", icon: "🍕" },
-  { id: "build", label: "Build Your Own", icon: "👨‍🍳" },
-  { id: "salads", label: "Salads & Sides", icon: "🥗" },
-  { id: "pasta", label: "Pastas & Subs", icon: "🍝" },
-  { id: "other", label: "Everything Else", icon: "🥤" },
+  {
+    id: "gourmet",
+    label: "Gourmet Pizzas",
+    icon: (
+      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M15 11h.01" />
+        <path d="M11 15h.01" />
+        <path d="M16 16h.01" />
+        <path d="m2 16 20 6-6-20A20 20 0 0 0 2 16Z" />
+        <path d="M5.71 17.11a17.04 17.04 0 0 1 11.4-11.4" />
+      </svg>
+    ),
+  },
+  {
+    id: "build",
+    label: "Build Your Own",
+    icon: (
+      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M6 18V6a4 4 0 0 1 8 0v12" />
+        <path d="M18 18V9a4 4 0 0 0-8 0v9" />
+        <path d="M3 18h18" />
+        <path d="M5 22h14" />
+      </svg>
+    ),
+  },
+  {
+    id: "salads",
+    label: "Salads & Sides",
+    icon: (
+      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M7 21h10" />
+        <path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z" />
+        <path d="M11 3a2 2 0 0 1 2 2" />
+        <path d="M6 8a2 2 0 0 1 2 2" />
+        <path d="M16 8a2 2 0 0 1 2 2" />
+      </svg>
+    ),
+  },
+  {
+    id: "pasta",
+    label: "Pastas & Subs",
+    icon: (
+      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 3.58 8 8 8h4c4.42 0 8-3.58 8-8 0-5.52-4.52-10-10-10z" />
+        <path d="M12 6a4 4 0 0 0-4 4" />
+      </svg>
+    ),
+  },
+  {
+    id: "other",
+    label: "Everything Else",
+    icon: (
+      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M17 8h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2" />
+        <path d="M5 8h12v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8z" />
+        <path d="M6 4h10" />
+        <path d="m15 4-2-3H9L7 4" />
+      </svg>
+    ),
+  },
 ];
 
 // 8 different working Unsplash images (used elsewhere on site) – each item gets one, no duplicate in a row
