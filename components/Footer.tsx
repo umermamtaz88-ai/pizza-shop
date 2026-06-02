@@ -63,90 +63,90 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-neutral-100">
+    <footer className="bg-neutral-950 border-t border-white/5 relative z-10">
       {/* Badges row */}
-      <div className="border-b border-neutral-200 bg-neutral-900 px-4 py-10 sm:py-12">
+      <div className="border-b border-white/5 bg-neutral-900/10 px-4 py-12 sm:py-16">
         <div className="mx-auto grid max-w-5xl grid-cols-2 gap-6 sm:grid-cols-4">
           {/* Fresh Ingredients */}
-          <div className="flex flex-col items-center gap-2 text-center">
-            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/10 ring-2 ring-emerald-500/30">
+          <div className="flex flex-col items-center gap-3 text-center group">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/10 ring-2 ring-emerald-500/30 transition-transform duration-300 group-hover:scale-110">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-7 w-7 text-emerald-400">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z" />
               </svg>
             </div>
             <div>
               <p className="text-sm font-bold text-white">Fresh Ingredients</p>
-              <p className="text-xs text-neutral-400">Always quality</p>
+              <p className="text-xs text-neutral-500 mt-0.5">Always quality</p>
             </div>
           </div>
 
           {/* Fast Delivery */}
-          <div className="flex flex-col items-center gap-2 text-center">
-            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-orange-500/10 ring-2 ring-orange-500/30">
+          <div className="flex flex-col items-center gap-3 text-center group">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-orange-500/10 ring-2 ring-orange-500/30 transition-transform duration-300 group-hover:scale-110">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-7 w-7 text-orange-400">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
               </svg>
             </div>
             <div>
               <p className="text-sm font-bold text-white">Fast Delivery</p>
-              <p className="text-xs text-neutral-400">30 min or less</p>
+              <p className="text-xs text-neutral-500 mt-0.5">30 min or less</p>
             </div>
           </div>
 
           {/* Top Rated */}
-          <div className="flex flex-col items-center gap-2 text-center">
-            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-amber-500/10 ring-2 ring-amber-500/30">
+          <div className="flex flex-col items-center gap-3 text-center group">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-amber-500/10 ring-2 ring-amber-500/30 transition-transform duration-300 group-hover:scale-110">
               <svg viewBox="0 0 24 24" fill="currentColor" className="h-7 w-7 text-amber-400">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
               </svg>
             </div>
             <div>
               <p className="text-sm font-bold text-white">Top Rated</p>
-              <p className="text-xs text-neutral-400">4.9★ average</p>
+              <p className="text-xs text-neutral-500 mt-0.5">4.9★ average</p>
             </div>
           </div>
 
           {/* 100% Satisfaction */}
-          <div className="flex flex-col items-center gap-2 text-center">
-            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-sky-500/10 ring-2 ring-sky-500/30">
+          <div className="flex flex-col items-center gap-3 text-center group">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-sky-500/10 ring-2 ring-sky-500/30 transition-transform duration-300 group-hover:scale-110">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-7 w-7 text-sky-400">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
               </svg>
             </div>
             <div>
               <p className="text-sm font-bold text-white">100% Satisfaction</p>
-              <p className="text-xs text-neutral-400">Guaranteed</p>
+              <p className="text-xs text-neutral-500 mt-0.5">Guaranteed</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Upper block: Catering, Work, Franchise */}
-      <div className="border-b border-neutral-200 px-4 py-12 sm:py-14">
+      <div className="border-b border-white/5 px-4 py-14 sm:py-16">
         <div className="mx-auto grid max-w-6xl gap-8 sm:grid-cols-3">
-          <div>
-            <h3 className="mb-2 font-semibold text-neutral-900">
+          <div className="bg-neutral-900/30 border border-white/5 rounded-2xl p-6 sm:p-8 hover:border-white/10 transition-colors duration-300">
+            <h3 className="mb-3 font-bold text-white text-lg tracking-tight">
               Catering & Events
             </h3>
-            <p className="text-sm text-neutral-600">
+            <p className="text-sm text-neutral-400 font-light leading-relaxed">
               Make your next event memorable with Crust Pizza catering. Perfect
               for offices, parties, and gatherings.
             </p>
           </div>
-          <div>
-            <h3 className="mb-2 font-semibold text-neutral-900">
+          <div className="bg-neutral-900/30 border border-white/5 rounded-2xl p-6 sm:p-8 hover:border-white/10 transition-colors duration-300">
+            <h3 className="mb-3 font-bold text-white text-lg tracking-tight">
               Work at Crust Pizza
             </h3>
-            <p className="text-sm text-neutral-600">
+            <p className="text-sm text-neutral-400 font-light leading-relaxed">
               Join our team. We’re always looking for friendly, motivated people
               to help us serve great pizza.
             </p>
           </div>
-          <div>
-            <h3 className="mb-2 font-semibold text-neutral-900">
+          <div className="bg-neutral-900/30 border border-white/5 rounded-2xl p-6 sm:p-8 hover:border-white/10 transition-colors duration-300">
+            <h3 className="mb-3 font-bold text-white text-lg tracking-tight">
               Own a Crust Franchise
             </h3>
-            <p className="text-sm text-neutral-600">
+            <p className="text-sm text-neutral-400 font-light leading-relaxed">
               Interested in opening your own Crust Pizza? Get in touch about
               franchise opportunities.
             </p>
@@ -155,39 +155,39 @@ export default function Footer() {
       </div>
 
       {/* Main footer: links, contact, social, copyright */}
-      <div className="px-4 py-8 sm:py-10">
+      <div className="px-4 py-12 sm:py-16">
         <div className="mx-auto max-w-6xl text-center">
           <nav
-            className="mb-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium text-neutral-700"
+            className="mb-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-bold text-neutral-400"
             aria-label="Footer navigation"
           >
             {footerLinks.map(({ label, href }) => (
               <Link
                 key={label}
                 href={href}
-                className="hover:text-neutral-900"
+                className="hover:text-white transition-colors duration-200"
               >
                 {label}
               </Link>
             ))}
           </nav>
-          <p className="mb-6 text-sm text-neutral-600">
+          <p className="mb-8 text-sm text-neutral-400 font-light">
             Tell us how we’re doing.{" "}
             <a
               href="mailto:feedback@crustpizza.com"
-              className="underline hover:no-underline"
+              className="underline text-orange-400 hover:text-orange-300 font-semibold transition-colors duration-200"
             >
               feedback@crustpizza.com
             </a>
           </p>
-          <div className="mb-6 flex justify-center gap-3">
+          <div className="mb-8 flex justify-center gap-3">
             {socialLinks.map(({ label, href, icon, bgClass, tooltip }) => (
               <Tooltip key={label} text={tooltip} placement="top">
                 <a
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex h-11 w-11 items-center justify-center rounded-full text-white shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-400 ${bgClass}`}
+                  className={`flex h-11 w-11 items-center justify-center rounded-full text-white shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 ${bgClass}`}
                   aria-label={label}
                 >
                   {icon}
@@ -195,14 +195,14 @@ export default function Footer() {
               </Tooltip>
             ))}
           </div>
-          <p className="text-xs text-neutral-500">
+          <p className="text-xs text-neutral-600 font-semibold">
             © {new Date().getFullYear()} CRUST PIZZA CO.
           </p>
           <a
             href="https://vercel.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-4 py-2 text-xs text-neutral-600 shadow-sm transition hover:shadow-md hover:border-neutral-300"
+            className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/5 bg-neutral-900/50 px-4 py-2 text-xs text-neutral-400 shadow-sm transition hover:shadow-md hover:border-white/10 hover:bg-neutral-900"
           >
             Powered by{" "}
             <svg
@@ -213,7 +213,7 @@ export default function Footer() {
             >
               <path d="m577.3 0 577.4 1000H0z" fill="currentColor" />
             </svg>
-            <span className="font-semibold text-neutral-900">Vercel</span>
+            <span className="font-bold text-white">Vercel</span>
           </a>
         </div>
       </div>

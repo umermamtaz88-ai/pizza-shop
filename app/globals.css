@@ -1,15 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050506;
+  --foreground: #f5f5f7;
   --crust-orange: #ea580c;
-  --crust-orange-hover: #c2410c;
+  --crust-orange-hover: #f97316;
+  --accent-gold: #fbbf24;
+  --card-bg: rgba(14, 14, 18, 0.6);
+  --card-border: rgba(255, 255, 255, 0.06);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--card-border);
   --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
   --font-condensed: var(--font-roboto-condensed), ui-sans-serif, system-ui, sans-serif;
@@ -20,6 +25,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  overflow-x: hidden;
 }
 
 p {
@@ -33,5 +39,26 @@ p {
 }
 
 html {
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
 }
+
+/* Custom premium scrollbar for dark mode */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050506;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f1f23;
+  border-radius: 9999px;
+  border: 2px solid #050506;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ea580c;
+}
+

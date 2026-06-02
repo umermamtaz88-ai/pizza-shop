@@ -33,27 +33,27 @@ export default function MenuCard({ item }: MenuCardProps) {
   };
 
   return (
-    <article className="flex flex-col overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm transition-shadow hover:shadow-md">
-      <div className="relative aspect-square w-full bg-neutral-100">
+    <article className="flex flex-col overflow-hidden rounded-2xl border border-white/5 bg-neutral-900/60 backdrop-blur-sm shadow-lg hover:shadow-orange-500/5 transition-all duration-300 hover:-translate-y-1 group">
+      <div className="relative aspect-square w-full bg-neutral-950 overflow-hidden">
         <Image
           src={item.imageUrl}
           alt={item.name}
           fill
-          className="object-cover"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
         />
-        <span className="absolute left-2 top-2 flex h-6 w-6 items-center justify-center rounded-full bg-green-600 text-xs font-bold text-white">
+        <span className="absolute left-3 top-3 flex h-7 w-7 items-center justify-center rounded-full bg-emerald-500 text-sm font-bold text-white shadow-md shadow-emerald-500/25">
           ✓
         </span>
       </div>
-      <div className="flex flex-1 flex-col gap-3 p-4">
-        <h3 className="font-semibold text-neutral-900">{item.name}</h3>
-        <p className="text-sm text-neutral-600">Starting {item.price}</p>
-        <div className="mt-auto pt-2">
+      <div className="flex flex-1 flex-col gap-3 p-5">
+        <h3 className="font-bold text-white text-lg tracking-tight group-hover:text-orange-400 transition-colors duration-200">{item.name}</h3>
+        <p className="text-sm text-neutral-400">Starting <span className="text-orange-400 font-semibold">{item.price}</span></p>
+        <div className="mt-auto pt-4">
           <button
             type="button"
             onClick={handleOrder}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#ea580c] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#c2410c] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-orange-600 hover:bg-orange-500 active:scale-95 text-white py-3 text-sm font-bold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-orange-500 shadow-md shadow-orange-500/10 hover:shadow-orange-500/20"
           >
             Order Now
           </button>

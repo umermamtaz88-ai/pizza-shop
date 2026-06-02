@@ -31,10 +31,13 @@ export default function Hero() {
   const { openModal } = useOrder();
 
   return (
-    <section className="relative overflow-hidden min-h-screen flex flex-col bg-neutral-200/80">
+    <section className="relative overflow-hidden min-h-screen flex flex-col bg-neutral-950">
+      {/* Ambient background glows */}
+      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-[#ea580c]/6 blur-[120px] pointer-events-none z-0" />
+      <div className="absolute bottom-1/3 right-1/4 translate-x-1/2 translate-y-1/2 w-[400px] h-[400px] rounded-full bg-[#fbbf24]/4 blur-[130px] pointer-events-none z-0" />
       {/* Section 1: Size selector */}
       <div className="relative z-20 flex flex-col items-center pt-6 pb-2 sm:pb-4">
-        <span className="mb-2 text-xs font-medium uppercase tracking-wider text-neutral-500">
+        <span className="mb-2 text-xs font-semibold uppercase tracking-wider text-neutral-400">
           Select size
         </span>
         <div className="flex justify-center gap-2">
@@ -55,9 +58,9 @@ export default function Hero() {
               <button
                 type="button"
                 onClick={() => setSelectedSize(size)}
-                className={`h-10 w-10 rounded-full text-sm font-semibold transition-colors sm:h-12 sm:w-12 ${selectedSize === size
-                  ? "bg-neutral-900 text-white"
-                  : "bg-white text-neutral-700 ring-1 ring-neutral-200 hover:ring-neutral-300"
+                className={`h-10 w-10 rounded-full text-sm font-bold transition-all duration-300 sm:h-12 sm:w-12 border ${selectedSize === size
+                  ? "bg-[#ea580c] border-[#ea580c] text-white shadow-lg shadow-orange-500/25 scale-110"
+                  : "bg-neutral-900/60 border-white/5 text-neutral-300 hover:bg-neutral-800/80 hover:text-white"
                   }`}
                 aria-pressed={selectedSize === size}
                 aria-label={`Size ${size}`}
@@ -72,11 +75,14 @@ export default function Hero() {
       {/* Huge centered pizza + dotted arc + pizza names — scales with selected size (background) */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
         <div
-          className="relative w-full min-w-full aspect-square drop-shadow-[0_20px_40px_-15px_rgba(0,0,0,0.12)]"
+          className="relative w-full min-w-full aspect-square drop-shadow-[0_25px_50px_-12px_rgba(234,88,12,0.15)]"
           style={{ transform: `translateY(-25%) scale(${sizeScale[selectedSize]})` }}
         >
+          {/* Pizza radial glow */}
+          <div className="absolute -inset-10 rounded-full bg-gradient-to-r from-orange-600/10 to-amber-600/10 blur-3xl -z-10 animate-pulse pointer-events-none" />
+
           {/* Pizza circle - picture style: shadow + frame */}
-          <div className="absolute inset-0 rounded-full overflow-hidden ring-2 ring-white/90 ring-offset-4 ring-offset-neutral-200/80 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.08),0_10px_25px_-5px_rgba(0,0,0,0.06),0_25px_50px_-12px_rgba(0,0,0,0.15)]">
+          <div className="absolute inset-0 rounded-full overflow-hidden ring-4 ring-white/10 ring-offset-4 ring-offset-neutral-950 shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
             <Image
               src="/057f1b6c-ec55-47d9-8275-cabf3479c3fe.jpg"
               alt="Fresh pepperoni pizza with melted cheese"
@@ -144,11 +150,12 @@ export default function Hero() {
                 return (
                   <span
                     key={name}
-                    className="absolute text-[clamp(0.4rem,1.1vw,0.6rem)] font-semibold uppercase tracking-wider whitespace-nowrap -translate-x-1/2 -translate-y-1/2"
+                    className={`absolute text-[clamp(0.4rem,1.1vw,0.6rem)] font-bold uppercase tracking-widest whitespace-nowrap -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${
+                      isHighlighted ? "text-orange-500 scale-110 drop-shadow-[0_0_8px_rgba(234,88,12,0.5)]" : "text-neutral-500"
+                    }`}
                     style={{
                       left: `${textX}%`,
                       top: `${textY}%`,
-                      color: isHighlighted ? "#ea580c" : "#525252",
                     }}
                   >
                     {name}
@@ -160,11 +167,11 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Section 4: Dark block — pizza image, CRUST PIZZA card, headline + description */}
-      <div className="relative z-10 w-full bg-neutral-900 px-4 py-12 sm:py-16 md:py-20">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 md:flex-row md:items-stretch md:gap-10">
+      {/* Section 4: Premium glass card */}
+      <div className="relative z-10 w-full px-4 py-12 sm:py-16 md:py-20 mt-auto">
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 md:flex-row md:items-stretch md:gap-10 bg-neutral-900/40 border border-white/5 backdrop-blur-md rounded-3xl p-6 sm:p-8 md:p-10 shadow-2xl">
           {/* Left: Pizza image */}
-          <div className="relative w-full flex-shrink-0 overflow-hidden rounded-2xl md:w-2/5 md:max-w-md">
+          <div className="relative w-full flex-shrink-0 overflow-hidden rounded-2xl md:w-2/5 md:max-w-md ring-1 ring-white/10">
             <div className="relative aspect-[4/3] w-full">
               <Image
                 src="/057f1b6c-ec55-47d9-8275-cabf3479c3fe.jpg"
@@ -177,18 +184,21 @@ export default function Hero() {
           </div>
           {/* Middle: CRUST PIZZA card */}
           <div className="flex flex-shrink-0 items-center justify-center md:w-auto">
-            <div className="rounded-xl border border-neutral-600 bg-neutral-800 px-8 py-6 text-center">
-              <span className="text-xl font-bold tracking-tight text-white sm:text-2xl">
-                CRUST PIZZA
+            <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-neutral-900 to-neutral-950 px-8 py-8 text-center shadow-lg shadow-orange-500/5 ring-1 ring-white/5">
+              <span className="text-2xl font-black tracking-widest bg-gradient-to-r from-orange-400 via-orange-500 to-amber-500 bg-clip-text text-transparent sm:text-3xl block">
+                CRUST
+              </span>
+              <span className="text-xs font-bold uppercase tracking-widest text-neutral-400 block mt-1">
+                PIZZA CO.
               </span>
             </div>
           </div>
           {/* Right: Headline + description */}
           <div className="flex flex-1 flex-col justify-center text-white">
-            <h2 className="mb-4 text-2xl font-bold leading-tight sm:text-3xl md:text-4xl">
+            <h2 className="mb-4 text-2xl font-extrabold leading-tight sm:text-3xl md:text-4xl tracking-tight bg-gradient-to-r from-white via-neutral-100 to-neutral-300 bg-clip-text text-transparent">
               Chicago-Style Thin Crust Pizza That Even Texans Will Love
             </h2>
-            <p className="max-w-lg text-neutral-300 sm:text-lg">
+            <p className="max-w-lg text-neutral-400 sm:text-lg font-light leading-relaxed">
               We&apos;re a locally owned pizza shop serving quality ingredients and a comfortable
               atmosphere. Stop by or order online for pickup and delivery.
             </p>
@@ -197,13 +207,13 @@ export default function Hero() {
       </div>
 
       {/* Order Now - clickable overlay */}
-      <div className="relative z-20 pointer-events-auto pb-8 sm:pb-10 md:pb-12">
+      <div className="relative z-20 pointer-events-auto pb-12 sm:pb-16 flex justify-center">
         <Tooltip text="Place your order" placement="top">
           <span className="inline-block">
             <button
               type="button"
               onClick={openModal}
-              className="inline-flex items-center justify-center gap-2 rounded-full font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 bg-neutral-900 text-white focus:ring-neutral-600 px-5 py-3 hover:bg-gradient-to-r hover:from-[#ea580c] hover:via-[#c2410c] hover:to-neutral-800 shadow-lg sm:px-6 sm:py-3"
+              className="inline-flex items-center justify-center gap-2 rounded-full font-bold focus:outline-none focus:ring-2 focus:ring-offset-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white focus:ring-orange-500 px-8 py-4 shadow-xl shadow-orange-500/25 hover:shadow-orange-500/40 transition-all duration-300 hover:scale-105"
             >
               Order Now
             </button>

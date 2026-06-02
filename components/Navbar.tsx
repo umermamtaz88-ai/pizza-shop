@@ -37,14 +37,14 @@ export default function Navbar() {
   }, [aboutOpen]);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
+    <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-neutral-950/75 backdrop-blur-md supports-[backdrop-filter]:bg-neutral-950/40">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-4 px-4 sm:h-16 sm:px-6 lg:px-8">
         {/* Logo – icon-based */}
         <Tooltip text="Go to home" placement="bottom">
           <Link
             href="/"
             onClick={() => toast("Going to Home")}
-            className="flex shrink-0 items-center gap-2.5 text-neutral-900 no-underline transition-opacity hover:opacity-90"
+            className="flex shrink-0 items-center gap-2.5 text-white no-underline transition-opacity hover:opacity-90"
             aria-label="Crust Pizza home"
           >
             <span className="flex h-9 w-9 shrink-0 items-center justify-center sm:h-10 sm:w-10">
@@ -75,10 +75,10 @@ export default function Navbar() {
               </svg>
             </span>
             <span className="hidden font-bold tracking-tight sm:inline">
-              <span className="bg-gradient-to-r from-[#ea580c] to-[#c2410c] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-orange-400 via-orange-500 to-amber-500 bg-clip-text text-transparent">
                 CRUST
               </span>
-              <span className="text-neutral-800"> PIZZA</span>
+              <span className="text-neutral-300"> PIZZA</span>
             </span>
           </Link>
         </Tooltip>
@@ -94,7 +94,7 @@ export default function Navbar() {
                 <Link
                   href={href}
                   onClick={() => toast(`Going to ${label}`)}
-                  className="text-sm font-medium text-neutral-700 hover:text-neutral-900"
+                  className="text-sm font-medium text-neutral-300 transition-colors hover:text-white"
                 >
                   {label}
                 </Link>
@@ -104,7 +104,7 @@ export default function Navbar() {
                   <button
                     type="button"
                     onClick={() => setAboutOpen((o) => !o)}
-                    className="flex items-center gap-0.5 text-sm font-medium text-neutral-700 hover:text-neutral-900 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 rounded-md px-1"
+                    className="flex items-center gap-0.5 text-sm font-medium text-neutral-300 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 rounded-md px-1"
                     aria-expanded={aboutOpen}
                     aria-haspopup="true"
                     aria-label="About menu"
@@ -125,7 +125,7 @@ export default function Navbar() {
                   </button>
                   {aboutOpen && (
                     <div
-                      className="absolute left-1/2 top-full z-50 mt-1 min-w-[160px] -translate-x-1/2 rounded-lg border border-neutral-200 bg-white py-1 shadow-lg"
+                      className="absolute left-1/2 top-full z-50 mt-1 min-w-[160px] -translate-x-1/2 rounded-lg border border-white/10 bg-neutral-900/95 backdrop-blur-md py-1 shadow-xl"
                       role="menu"
                     >
                       {aboutDropdownItems.map(({ label: itemLabel, href: itemHref, tooltip: itemTooltip }) => (
@@ -133,7 +133,7 @@ export default function Navbar() {
                           <Link
                             href={itemHref}
                             role="menuitem"
-                            className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-neutral-900"
+                            className="block px-4 py-2 text-sm text-neutral-300 hover:bg-white/5 hover:text-white transition-colors"
                             onClick={() => {
                               setAboutOpen(false);
                               toast(`Going to ${itemLabel}`);
@@ -157,7 +157,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={openModal}
-              className="flex h-10 w-10 items-center justify-center rounded-lg text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900"
+              className="flex h-10 w-10 items-center justify-center rounded-lg text-neutral-400 transition-colors hover:bg-white/5 hover:text-white"
               aria-label="Cart / Order"
             >
               <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -184,7 +184,7 @@ export default function Navbar() {
           <Tooltip text={open ? "Close menu" : "Open menu"}>
             <button
               type="button"
-              className="flex h-10 w-10 items-center justify-center rounded-lg text-neutral-600 hover:bg-neutral-100 md:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-lg text-neutral-400 hover:bg-white/5 md:hidden"
               onClick={() => setOpen((o) => !o)}
               aria-expanded={open}
               aria-label="Toggle menu"
@@ -201,11 +201,11 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="border-t border-neutral-200 bg-white px-4 py-4 md:hidden">
+        <div className="border-t border-white/5 bg-neutral-950/95 backdrop-blur-md px-4 py-4 md:hidden">
           <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
             <Link
               href={navLinks[0].href}
-              className="rounded-lg py-2 text-neutral-700 hover:bg-neutral-50"
+              className="rounded-lg py-2 text-neutral-300 hover:bg-white/5 hover:text-white px-2 transition-colors"
               onClick={() => {
                 setOpen(false);
                 toast(`Going to ${navLinks[0].label}`);
@@ -220,7 +220,7 @@ export default function Navbar() {
               <Link
                 key={itemHref}
                 href={itemHref}
-                className="block rounded-lg py-2 pl-4 text-neutral-700 hover:bg-neutral-50"
+                className="block rounded-lg py-2 pl-4 text-neutral-300 hover:bg-white/5 hover:text-white transition-colors"
                 onClick={() => {
                   setOpen(false);
                   toast(`Going to ${itemLabel}`);
@@ -233,7 +233,7 @@ export default function Navbar() {
               <Link
                 key={href}
                 href={href}
-                className="rounded-lg py-2 text-neutral-700 hover:bg-neutral-50"
+                className="rounded-lg py-2 text-neutral-300 hover:bg-white/5 hover:text-white px-2 transition-colors"
                 onClick={() => {
                   setOpen(false);
                   toast(`Going to ${label}`);
@@ -246,7 +246,7 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => { openModal(); setOpen(false); }}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#ea580c] px-5 py-3 font-semibold text-white transition-colors hover:bg-[#c2410c] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#ea580c] px-5 py-3 font-semibold text-white transition-colors hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 shadow-md shadow-orange-500/10"
               >
                 Order Online
               </button>

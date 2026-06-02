@@ -51,23 +51,29 @@ export default function MenuSection() {
   const filteredItems = menuItems.filter((item) => item.category === activeCategory);
 
   return (
-    <section className="bg-neutral-50 px-4 py-12 sm:py-16 md:py-20" id="menu">
-      <div className="mx-auto max-w-6xl">
-        <h2 className="mb-8 text-center text-2xl font-bold tracking-tight text-neutral-900 sm:text-3xl">
+    <section className="bg-neutral-950 px-4 py-16 sm:py-20 md:py-24 relative overflow-hidden border-b border-white/5" id="menu">
+      {/* Ambient glowing blob */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-orange-600/3 blur-[140px] pointer-events-none z-0" />
+
+      <div className="mx-auto max-w-6xl relative z-10">
+        <h2 className="mb-3 text-center text-3xl font-extrabold tracking-tight bg-gradient-to-r from-white via-neutral-100 to-neutral-300 bg-clip-text text-transparent sm:text-4xl">
           Our Menu
         </h2>
+        <p className="text-center text-neutral-400 text-sm max-w-md mx-auto mb-10">
+          Handcrafted thin-crust pizzas made with quality ingredients and baked to crispy perfection.
+        </p>
 
         {/* Category filters */}
-        <div className="mb-10 flex flex-wrap justify-center gap-2 sm:gap-4">
+        <div className="mb-12 flex flex-wrap justify-center gap-2 sm:gap-4">
           {categories.map((cat) => (
             <button
               key={cat.id}
               type="button"
               onClick={() => setActiveCategory(cat.id)}
-              className={`flex items-center gap-2 rounded-full border-2 px-4 py-2 text-sm font-medium transition-colors ${
+              className={`flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-bold transition-all duration-300 cursor-pointer ${
                 activeCategory === cat.id
-                  ? "border-[#ea580c] bg-orange-50 text-[#ea580c]"
-                  : "border-transparent bg-white text-neutral-600 hover:bg-neutral-100"
+                  ? "border-orange-500 bg-orange-600 text-white shadow-lg shadow-orange-500/20 scale-105"
+                  : "border-white/5 bg-neutral-900/60 text-neutral-400 hover:bg-neutral-800 hover:text-white"
               }`}
             >
               <span aria-hidden>{cat.icon}</span>
